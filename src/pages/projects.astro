@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+<BaseLayout title="Projects — Ziye Li" description="Selected robotics, ML, cloud, and embedded projects.">
+  <section class="space-y-4">
+    <h1 class="text-3xl font-semibold tracking-tight md:text-4xl">Projects</h1>
+    <p class="max-w-2xl text-base text-slate-300 md:text-lg">
+      Structured descriptions of robotics, ML, cloud, and embedded engineering projects. Each
+      project is written in Markdown/MDX and stored under <code>content/projects</code>.
+    </p>
+
+    <ul class="mt-6 space-y-3">
+      {projects.map((project) => (
+        <li class="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-sm text-slate-400">
+            {project.data.date}
+          </div>
+          <div class="text-base font-medium text-slate-100">
+            {project.data.title}
+          </div>
+          {project.data.summary && (
+            <p class="mt-1 text-sm text-slate-300">
+              {project.data.summary}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

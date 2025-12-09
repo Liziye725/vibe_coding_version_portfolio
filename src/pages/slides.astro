@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const decks = await getCollection('slides');
+---
+<BaseLayout title="Slides — Ziye Li" description="MDX-based slide decks and diagrams.">
+  <section class="space-y-4">
+    <h1 class="text-3xl font-semibold tracking-tight md:text-4xl">Slides</h1>
+    <p class="max-w-2xl text-base text-slate-300 md:text-lg">
+      Talk material, internal presentations, and technical walkthroughs, authored as MDX decks
+      under <code>content/slides</code>.
+    </p>
+
+    <ul class="mt-6 space-y-3">
+      {decks.map((deck) => (
+        <li class="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-sm text-slate-400">
+            {deck.data.date}
+          </div>
+          <div class="text-base font-medium text-slate-100">
+            {deck.data.title}
+          </div>
+          {deck.data.summary && (
+            <p class="mt-1 text-sm text-slate-300">
+              {deck.data.summary}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

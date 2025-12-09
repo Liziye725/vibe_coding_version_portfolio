@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Ziye Li — Portfolio" description="Robotics, ML, cloud, and embedded engineering portfolio">
+  <section class="space-y-4">
+    <h1 class="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+      Hi, I'm Ziye.
+    </h1>
+    <p class="max-w-2xl text-base text-slate-300 md:text-lg">
+      I build robotics, machine learning, cloud, and embedded systems. This site collects my
+      projects, technical blogs, slides, and notes.
+    </p>
+  </section>
+
+  <section class="grid gap-4 md:grid-cols-2 md:gap-6 mt-8">
+    <a href="/projects" class="rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-sky-500 hover:bg-slate-900">
+      <h2 class="text-lg font-medium">Projects</h2>
+      <p class="mt-2 text-sm text-slate-300">Robotics, ML, and embedded engineering work.</p>
+    </a>
+    <a href="/blog" class="rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-sky-500 hover:bg-slate-900">
+      <h2 class="text-lg font-medium">Blog</h2>
+      <p class="mt-2 text-sm text-slate-300">Deep-dive technical posts and notes.</p>
+    </a>
+    <a href="/slides" class="rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-sky-500 hover:bg-slate-900">
+      <h2 class="text-lg font-medium">Slides</h2>
+      <p class="mt-2 text-sm text-slate-300">MDX decks for talks and internal presentations.</p>
+    </a>
+    <a href="/about" class="rounded-xl border border-slate-800 bg-slate-900/40 p-5 transition hover:border-sky-500 hover:bg-slate-900">
+      <h2 class="text-lg font-medium">About</h2>
+      <p class="mt-2 text-sm text-slate-300">Background, interests, and contact info.</p>
+    </a>
+  </section>
+</BaseLayout>

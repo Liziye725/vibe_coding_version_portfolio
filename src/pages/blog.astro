@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+---
+<BaseLayout title="Blog — Ziye Li" description="Technical blog posts by Ziye Li.">
+  <section class="space-y-4">
+    <h1 class="text-3xl font-semibold tracking-tight md:text-4xl">Blog</h1>
+    <p class="max-w-2xl text-base text-slate-300 md:text-lg">
+      Long-form notes and technical deep dives. Content is written in Markdown/MDX and stored
+      under <code>content/blog</code>.
+    </p>
+    <p class="text-sm text-slate-400">
+      Sample posts live in <code>content/blog</code>. You can replace them with your own.
+    </p>
+
+    <ul class="mt-6 space-y-3">
+      {posts.map((post) => (
+        <li class="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
+          <div class="text-sm text-slate-400">
+            {post.data.date}
+          </div>
+          <div class="text-base font-medium text-slate-100">
+            {post.data.title}
+          </div>
+          {post.data.summary && (
+            <p class="mt-1 text-sm text-slate-300">
+              {post.data.summary}
+            </p>
+          )}
+          {post.data.anything && (
+            <p class="mt-1 text-xs text-slate-500">
+              {post.data.anything}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
