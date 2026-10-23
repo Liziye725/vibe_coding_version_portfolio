@@ -1,7 +1,12 @@
 ---
 import '../styles/global.css';
 
-const { title = 'Ziye Li — Portfolio', description = 'Robotics, machine learning, cloud, and embedded engineering projects' } = Astro.props;
+const { title = 'Ziye Li — Portfolio', description = 'Robotics, machine learning, cloud, and embedded engineering projects' } =
+  Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const normalize = (path: string) => (path.endsWith('/') ? path : `${path}/`);
+const isHome = normalize(Astro.url.pathname) === normalize(base);
 ---
 <html lang="en" class="bg-slate-950 text-slate-100">
   <head>
@@ -12,8 +17,8 @@ const { title = 'Ziye Li — Portfolio', description = 'Robotics, machine learni
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
     <main class="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 px-4 py-10 md:px-8">
-      {Astro.url.pathname !== '/' && (
-        <a href="/" class="text-sm text-sky-400 hover:text-sky-300 hover:underline">
+      {!isHome && (
+        <a href={base} class="text-sm text-sky-400 hover:text-sky-300 hover:underline">
           Back to home
         </a>
       )}
